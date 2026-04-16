@@ -21,17 +21,19 @@ A lightweight browser extension that scans and decodes QR codes on any webpage. 
 
 ### Chrome / Edge / Chromium
 
-1. [Download the zip](https://github.com/2may2011/qr-scanner-extension/archive/refs/heads/main.zip) and extract it, or clone this repository
-2. Go to `chrome://extensions`
-3. Enable **Developer mode** (toggle in top-right)
-4. Click **Load unpacked** and select the extracted extension folder
+1. [Download the zip](https://github.com/2may2011/qr-scanner-extension/archive/refs/heads/main.zip) and extract it.
+2. *Note: When you extract the zip, it creates a folder within a folder. Open the first folder to find the **inner** `qr-scanner-extension-main` folder (it contains `manifest.json`).*
+3. Go to `chrome://extensions`
+4. Enable **Developer mode** (toggle in top-right)
+5. Click **Load unpacked** and select that **inner** folder.
 
 ### Firefox
 
-1. [Download the zip](https://github.com/2may2011/qr-scanner-extension/archive/refs/heads/main.zip) and extract it, or clone this repository
-2. Go to `about:debugging#/runtime/this-firefox`
-3. Click **Load Temporary Add-on**
-4. Select the `manifest.json` file from the extracted extension folder
+1. [Download the zip](https://github.com/2may2011/qr-scanner-extension/archive/refs/heads/main.zip) and extract it.
+2. *Note: Find the **inner** folder that contains `manifest.json`.*
+3. Go to `about:debugging#/runtime/this-firefox`
+4. Click **Load Temporary Add-on**
+5. Select the `manifest.json` file from that inner folder.
 
 ## Usage
 

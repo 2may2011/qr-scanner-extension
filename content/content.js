@@ -187,7 +187,7 @@
   /**
    * Main scan function - scans all images, canvases, and viewport
    */
-  async function scanPage() {
+  async function scanPage(screenshotDataUrl) {
     // Clear previous results
     clearOverlays();
     scanResults = [];
@@ -213,13 +213,9 @@
     }
 
     // 3. Scan viewport screenshot (catches CSS backgrounds, SVGs, etc.)
-    try {
-      const response = await new Promise((resolve) => {
-        chrome.runtime.sendMessage({ action: "captureTab" }, resolve);
-      });
-
-      if (response && response.dataUrl) {
-        const viewportResults = await scanScreenshot(response.dataUrl);
+    if (screenshotDataUrl) {
+      try {
+        const viewportResults = await scanScreenshot(screenshotDataUrl);
 
         // Deduplicate: don't add viewport results that overlap with image results
         for (const vr of viewportResults) {
@@ -230,9 +226,9 @@
             scanResults.push(vr);
           }
         }
+      } catch (e) {
+        console.error("Screenshot scan failed:", e);
       }
-    } catch (e) {
-      // Screenshot capture may fail on some pages (e.g., chrome:// pages)
     }
 
     // Create overlays for found QR codes
@@ -459,15 +455,24 @@
 
   chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.action === "startScan") {
-      scanPage().then((results) => {
-        sendResponse({
-          found: results.length,
-          results: results.map((r) => ({
-            data: r.data,
-            source: r.source,
-          })),
-        });
-      });
+      try {
+        scanPage(message.screenshotDataUrl)
+          .then((results) => {
+            sendResponse({
+              found: results.length,
+              results: results.map((r) => ({
+                data: r.data,
+                source: r.source,
+              })),
+            });
+          })
+          .catch((err) => {
+            console.error("Scan error:", err);
+            sendResponse({ error: err.message, results: [] });
+          });
+      } catch (e) {
+        sendResponse({ error: e.message, results: [] });
+      }
       return true; // Async response
     }
 

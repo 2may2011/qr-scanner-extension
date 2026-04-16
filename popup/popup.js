@@ -28,25 +28,13 @@ scanBtn.addEventListener("click", () => {
       return;
     }
 
-    // Listen for scan results from content script
-    statusEl.textContent = "Scan triggered! Results will appear shortly...";
-    statusEl.className = "status scanning";
-  });
-
-  // Listen for results from content script via background
-  const listener = (message) => {
-    if (message.action === "scanResults") {
-      chrome.runtime.onMessage.removeListener(listener);
-      displayResults(message.results);
+    if (response && response.results) {
+      displayResults(response.results);
+    } else {
+      statusEl.textContent = "Scan completed, but no data was returned.";
+      statusEl.className = "status";
     }
-  };
-  chrome.runtime.onMessage.addListener(listener);
-
-  // Timeout after 8 seconds
-  setTimeout(() => {
-    chrome.runtime.onMessage.removeListener(listener);
-    scanBtn.disabled = false;
-  }, 8000);
+  });
 });
 
 function classifyContent(text) {

@@ -13,20 +13,25 @@ A lightweight browser extension that scans and decodes QR codes on any webpage. 
 - **Inverted QR support** — Detects both regular and inverted (light-on-dark) QR codes
 - **Privacy first** — All processing happens locally, no data leaves your browser
 
+## Download
+
+📦 **[Download QR Scanner Extension (.zip)](https://github.com/2may2011/qr-scanner-extension/archive/refs/heads/main.zip)** — Click to save the extension as a zip file, then extract it to get started.
+
 ## Installation
 
 ### Chrome / Edge / Chromium
 
-1. Download or clone this repository
+1. [Download the zip](https://github.com/2may2011/qr-scanner-extension/archive/refs/heads/main.zip) and extract it, or clone this repository
 2. Go to `chrome://extensions`
 3. Enable **Developer mode** (toggle in top-right)
-4. Click **Load unpacked** and select this extension's folder
+4. Click **Load unpacked** and select the extracted extension folder
 
 ### Firefox
 
-1. Go to `about:debugging#/runtime/this-firefox`
-2. Click **Load Temporary Add-on**
-3. Select the `manifest.json` file from this extension's folder
+1. [Download the zip](https://github.com/2may2011/qr-scanner-extension/archive/refs/heads/main.zip) and extract it, or clone this repository
+2. Go to `about:debugging#/runtime/this-firefox`
+3. Click **Load Temporary Add-on**
+4. Select the `manifest.json` file from the extracted extension folder
 
 ## Usage
 

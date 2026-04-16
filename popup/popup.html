@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="popup.css">
+  <title>QR Scanner</title>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <img src="../icons/icon48.png" alt="QR Scanner" class="logo">
+      <h1>QR Scanner</h1>
+    </div>
+
+    <div id="status" class="status">
+      Click scan to detect QR codes on this page.
+    </div>
+
+    <button id="scanBtn" class="scan-btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 7V5a2 2 0 0 1 2-2h2"/>
+        <path d="M17 3h2a2 2 0 0 1 2 2v2"/>
+        <path d="M21 17v2a2 2 0 0 1-2 2h-2"/>
+        <path d="M7 21H5a2 2 0 0 1-2-2v-2"/>
+        <line x1="7" y1="12" x2="17" y2="12"/>
+      </svg>
+      Scan Page for QR Codes
+    </button>
+
+    <div id="results" class="results hidden">
+      <div class="results-header">
+        <span id="resultCount">0</span> QR code(s) found
+      </div>
+      <div id="resultList" class="result-list"></div>
+    </div>
+
+    <p class="hint">QR codes will be highlighted on the page. Click any highlighted QR code to view its content.</p>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

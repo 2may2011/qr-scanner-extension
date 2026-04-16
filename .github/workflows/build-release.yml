@@ -1,0 +1,32 @@
+name: Build and Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create clean ZIP file
+        run: |
+          # Create a zip of only the necessary files, without a wrapping root folder
+          zip -r qr-scanner-extension.zip content icons lib popup background.js manifest.json README.md THIRD_PARTY_NOTICES.md
+
+      - name: Update Latest Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          name: "Latest Auto-Build"
+          body: "This is an automatically generated clean zip file of the latest code. It does not contain the annoying wrapper folder. Just extract and load!"
+          make_latest: true
+          files: qr-scanner-extension.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

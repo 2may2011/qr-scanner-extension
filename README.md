@@ -19,10 +19,10 @@ A lightweight browser extension that scans and decodes QR codes on any webpage. 
 
 ## Installation
 
-### Chrome / Edge / Chromium
+### Chrome / Edge / Brave / Chromium
 
 1. [Download the zip](https://github.com/2may2011/qr-scanner-extension/releases/download/latest/qr-scanner-extension.zip) and extract it.
-2. Go to `chrome://extensions` in your browser.
+2. Go to `chrome://extensions` (or `brave://extensions` in Brave).
 3. Enable **Developer mode** (toggle in top-right).
 4. Click **Load unpacked** and select the folder you just extracted.
 

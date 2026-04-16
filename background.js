@@ -23,8 +23,8 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       
       const tabId = tabs[0].id;
 
-      // Ensure we don't try to scan protected chrome:// or edge:// pages
-      if (tabs[0].url && (tabs[0].url.startsWith('chrome://') || tabs[0].url.startsWith('edge://') || tabs[0].url.startsWith('about:'))) {
+      // Ensure we don't try to scan protected chrome://, edge://, brave://, or about: pages
+      if (tabs[0].url && (tabs[0].url.startsWith('chrome://') || tabs[0].url.startsWith('edge://') || tabs[0].url.startsWith('brave://') || tabs[0].url.startsWith('about:'))) {
         sendResponse({ error: "Browser system pages cannot be scanned for security reasons." });
         return;
       }

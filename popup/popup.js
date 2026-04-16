@@ -45,9 +45,7 @@ scanBtn.addEventListener("click", () => {
   // Timeout after 8 seconds
   setTimeout(() => {
     chrome.runtime.onMessage.removeListener(listener);
-    if (scanBtn.disabled) {
-      scanBtn.disabled = false;
-    }
+    scanBtn.disabled = false;
   }, 8000);
 });
 

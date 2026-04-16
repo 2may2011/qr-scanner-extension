@@ -43,7 +43,7 @@ A lightweight browser extension that scans and decodes QR codes on any webpage. 
 - **Canvas scanning**: Reads pixel data directly from existing `<canvas>` elements on the page
 - **Viewport scanning**: Captures a screenshot of the visible area to detect QR codes rendered via CSS, SVG, or other non-standard methods
 - **Deduplication**: Results from different scanning methods are deduplicated to avoid showing the same QR code twice
-- Uses [jsQR](https://github.com/nicklockwood/jsQR) (MIT) for QR code detection
+- Uses [jsQR](https://github.com/cozmo/jsQR) (Apache-2.0) for QR code detection
 
 ## Privacy
 
@@ -75,7 +75,7 @@ A lightweight browser extension that scans and decodes QR codes on any webpage. 
 
 ## Credits
 
-- QR code detection via [jsQR](https://github.com/nicklockwood/jsQR) by Nicklockwood (MIT License)
+- QR code detection via [jsQR](https://github.com/cozmo/jsQR) by cozmo (Apache-2.0 License)
 
 ## License
 

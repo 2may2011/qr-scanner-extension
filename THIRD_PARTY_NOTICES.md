@@ -5,9 +5,9 @@ This extension includes the following third-party software:
 ## jsQR
 
 - **License**: Apache License 2.0
-- **Repository**: https://github.com/nicklockwood/jsQR
+- **Repository**: https://github.com/cozmo/jsQR
 - **Version**: 1.4.0
-- **Copyright**: Copyright (c) 2017 nicklockwood
+- **Copyright**: Copyright (c) 2017 cozmo
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

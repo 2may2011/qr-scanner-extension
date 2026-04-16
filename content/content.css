@@ -1,0 +1,226 @@
+/* QR Scanner overlay styles */
+
+.qr-scanner-overlay {
+  position: absolute;
+  border: 3px solid #6366f1;
+  border-radius: 8px;
+  background: rgba(99, 102, 241, 0.1);
+  cursor: pointer;
+  z-index: 2147483640;
+  transition: background 0.2s, border-color 0.2s;
+  pointer-events: auto;
+  animation: qr-scanner-pulse 2s ease-in-out infinite;
+}
+
+.qr-scanner-overlay:hover {
+  background: rgba(99, 102, 241, 0.25);
+  border-color: #818cf8;
+}
+
+.qr-scanner-overlay::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 20px;
+  height: 20px;
+  background: #6366f1;
+  border-radius: 50%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 7V5a2 2 0 0 1 2-2h2'/%3E%3Cpath d='M17 3h2a2 2 0 0 1 2 2v2'/%3E%3Cpath d='M21 17v2a2 2 0 0 1-2 2h-2'/%3E%3Cpath d='M7 21H5a2 2 0 0 1-2-2v-2'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 12px;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.5);
+}
+
+@keyframes qr-scanner-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(99, 102, 241, 0);
+  }
+}
+
+/* Scanning animation line */
+.qr-scanner-scanning-line {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #6366f1, transparent);
+  z-index: 2147483641;
+  pointer-events: none;
+  animation: qr-scanner-line-sweep 1.5s ease-in-out;
+  opacity: 0;
+}
+
+@keyframes qr-scanner-line-sweep {
+  0% {
+    top: 0;
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0.3;
+  }
+}
+
+/* Tooltip that shows decoded content */
+.qr-scanner-tooltip {
+  position: absolute;
+  z-index: 2147483641;
+  background: #1e1e3a;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 14px 16px;
+  max-width: 360px;
+  min-width: 200px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(99, 102, 241, 0.2);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #e2e8f0;
+  animation: qr-scanner-tooltip-in 0.2s ease-out;
+}
+
+@keyframes qr-scanner-tooltip-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.qr-scanner-tooltip-type {
+  font-size: 10px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #818cf8;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.qr-scanner-tooltip-content {
+  font-size: 13px;
+  line-height: 1.5;
+  word-break: break-all;
+  color: #cbd5e1;
+  max-height: 120px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+
+.qr-scanner-tooltip-content a {
+  color: #818cf8;
+  text-decoration: underline;
+}
+
+.qr-scanner-tooltip-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.qr-scanner-tooltip-btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+  font-family: inherit;
+}
+
+.qr-scanner-tooltip-btn-primary {
+  background: #6366f1;
+  color: #fff;
+}
+
+.qr-scanner-tooltip-btn-primary:hover {
+  background: #4f46e5;
+}
+
+.qr-scanner-tooltip-btn-secondary {
+  background: #334155;
+  color: #e2e8f0;
+}
+
+.qr-scanner-tooltip-btn-secondary:hover {
+  background: #475569;
+}
+
+.qr-scanner-tooltip-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 20px;
+  height: 20px;
+  background: none;
+  border: none;
+  color: #64748b;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.qr-scanner-tooltip-close:hover {
+  color: #e2e8f0;
+  background: #334155;
+}
+
+/* Notification badge */
+.qr-scanner-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 2147483642;
+  background: #1e1e3a;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 14px 20px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #e2e8f0;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: qr-scanner-notification-in 0.3s ease-out;
+  pointer-events: none;
+}
+
+@keyframes qr-scanner-notification-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.qr-scanner-notification-icon {
+  width: 24px;
+  height: 24px;
+  background: #6366f1;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.qr-scanner-notification.success {
+  border-color: rgba(52, 211, 153, 0.3);
+}
+
+.qr-scanner-notification.no-results {
+  border-color: rgba(148, 163, 184, 0.3);
+}
